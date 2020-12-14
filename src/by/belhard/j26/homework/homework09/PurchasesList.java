@@ -19,36 +19,12 @@ public class PurchasesList {
 
     public void showOrder(TreeMap<String, TreeMap<String, Integer>> persons) {
 
-        //Вывод списка покупок - не получается - спросить на занятии?
-        for (Map.Entry<String, TreeMap<String, Integer>> entry : persons.entrySet()) {
-            TreeMap<String, Integer> value = entry.getValue();
-            int finalProductValue = 0;
-            for (Map.Entry<String, Integer> product : value.entrySet()) {
-                String finalKeyProduct = product.getKey();
-
-                for (Map.Entry<String, TreeMap<String, Integer>> entryClone : persons.entrySet()) {
-                    TreeMap<String, Integer> valueClone = entryClone.getValue();
-                    for (Map.Entry<String, Integer> productClone : valueClone.entrySet()) {
-                        if (finalKeyProduct == productClone.getKey()){
-                            finalProductValue += productClone.getValue();
-                            valueClone.remove(productClone);
-                        }
-
-                    }
-                }
-
-                System.out.println(product.getKey() + ": " + finalProductValue);
-
-            }
-        }
-
-
         //Вывод покупок для каждого из списка
         for (Map.Entry<String, TreeMap<String, Integer>> entry : persons.entrySet()) {
             String key = entry.getKey();
             TreeMap<String, Integer> value = entry.getValue();
 
-            System.out.println(key + ":");
+            System.out.println("\n" + key + ":");
 
             for (Map.Entry<String, Integer> product : value.entrySet()) {
                 String keyProduct = product.getKey();
@@ -57,6 +33,32 @@ public class PurchasesList {
                 System.out.println(keyProduct + " " + valueProduct);
             }
         }
+
+        //Вывод списка покупок - слишком вывернуто - спросить на занятии?
+        System.out.println("\n");
+        TreeMap<String, TreeMap<String, Integer>> personsClone = new TreeMap<String, TreeMap<String, Integer>>(persons);
+        for (Map.Entry<String, TreeMap<String, Integer>> entry : personsClone.entrySet()) {
+            TreeMap<String, Integer> value = entry.getValue();
+            int finalProductValue = 0;
+            for (Map.Entry<String, Integer> product : value.entrySet()) {
+                String finalKeyProduct = product.getKey();
+
+                for (Map.Entry<String, TreeMap<String, Integer>> entryClone : personsClone.entrySet()) {
+                    TreeMap<String, Integer> valueClone = entryClone.getValue();
+                    for (Map.Entry<String, Integer> productClone : valueClone.entrySet()) {
+                        if (finalKeyProduct.equals(productClone.getKey())) {
+                            finalProductValue += productClone.getValue();
+                            valueClone.remove(productClone.getKey());
+                        }
+
+                    }
+                }
+
+                System.out.println(product.getKey() + ": " + finalProductValue);
+            }
+        }
+
+
     }
 
 }
