@@ -35,6 +35,7 @@ public class PurchasesList {
         }
 
         //Вывод списка покупок - слишком вывернуто - спросить на занятии?
+        //              ПОЛНАЯ ЕРУНДА?
         System.out.println("\n");
         TreeMap<String, TreeMap<String, Integer>> personsClone = new TreeMap<String, TreeMap<String, Integer>>(persons);
         for (Map.Entry<String, TreeMap<String, Integer>> entry : personsClone.entrySet()) {
@@ -48,7 +49,7 @@ public class PurchasesList {
                     for (Map.Entry<String, Integer> productClone : valueClone.entrySet()) {
                         if (finalKeyProduct.equals(productClone.getKey())) {
                             finalProductValue += productClone.getValue();
-                            valueClone.remove(productClone.getKey());
+                            valueClone.remove(productClone.getKey());//удаляет из обоих листов - почему?
                         }
 
                     }
