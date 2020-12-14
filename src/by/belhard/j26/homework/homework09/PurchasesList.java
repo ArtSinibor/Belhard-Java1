@@ -20,6 +20,27 @@ public class PurchasesList {
     public void showOrder(TreeMap<String, TreeMap<String, Integer>> persons) {
 
         //Вывод списка покупок - не получается - спросить на занятии?
+        for (Map.Entry<String, TreeMap<String, Integer>> entry : persons.entrySet()) {
+            TreeMap<String, Integer> value = entry.getValue();
+            int finalProductValue = 0;
+            for (Map.Entry<String, Integer> product : value.entrySet()) {
+                String finalKeyProduct = product.getKey();
+
+                for (Map.Entry<String, TreeMap<String, Integer>> entryClone : persons.entrySet()) {
+                    TreeMap<String, Integer> valueClone = entryClone.getValue();
+                    for (Map.Entry<String, Integer> productClone : valueClone.entrySet()) {
+                        if (finalKeyProduct == productClone.getKey()){
+                            finalProductValue += productClone.getValue();
+                            valueClone.remove(productClone);
+                        }
+
+                    }
+                }
+
+                System.out.println(product.getKey() + ": " + finalProductValue);
+
+            }
+        }
 
 
         //Вывод покупок для каждого из списка
