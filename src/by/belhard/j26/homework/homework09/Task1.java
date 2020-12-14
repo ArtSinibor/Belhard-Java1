@@ -6,7 +6,7 @@ public class Task1 {
     public static void main(String[] args) {
         HashSet<Integer> set = new HashSet<Integer>();
 
-        for (int i = 0; i < 10; i++) {
+        while (set.size()<10){
             set.add(-100 + (int) (Math.random() * 200));
         }
 
@@ -19,8 +19,7 @@ public class Task1 {
         System.out.println("New set: " + set);
     }
 
-    private static HashSet<Integer> removeLessThenBorder(HashSet<Integer> set, int border) {
+    private static void removeLessThenBorder(HashSet<Integer> set, int border) {
         set.removeIf(integer -> integer < border);
-        return set;
     }
 }

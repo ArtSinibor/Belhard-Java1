@@ -13,6 +13,7 @@ public class Task2 {
         order.addOrder(list1, "Vasiliy", "Butter", 1);
         order.addOrder(list1, "Vasiliy", "Butter", 3);
         order.addOrder(list1, "Arseniy", "Milk", 3);
+
         order.showOrder(list1);
 
     }

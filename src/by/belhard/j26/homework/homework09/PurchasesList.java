@@ -34,22 +34,20 @@ public class PurchasesList {
             }
         }
 
-        //Вывод списка покупок - слишком вывернуто - спросить на занятии?
-        //              ПОЛНАЯ ЕРУНДА?
+        //Вывод списка покупок
         System.out.println("\n");
-        TreeMap<String, TreeMap<String, Integer>> personsClone = new TreeMap<String, TreeMap<String, Integer>>(persons);
-        for (Map.Entry<String, TreeMap<String, Integer>> entry : personsClone.entrySet()) {
+        for (Map.Entry<String, TreeMap<String, Integer>> entry : persons.entrySet()) {
             TreeMap<String, Integer> value = entry.getValue();
             int finalProductValue = 0;
             for (Map.Entry<String, Integer> product : value.entrySet()) {
                 String finalKeyProduct = product.getKey();
 
-                for (Map.Entry<String, TreeMap<String, Integer>> entryClone : personsClone.entrySet()) {
+                for (Map.Entry<String, TreeMap<String, Integer>> entryClone : persons.entrySet()) {
                     TreeMap<String, Integer> valueClone = entryClone.getValue();
                     for (Map.Entry<String, Integer> productClone : valueClone.entrySet()) {
                         if (finalKeyProduct.equals(productClone.getKey())) {
                             finalProductValue += productClone.getValue();
-                            valueClone.remove(productClone.getKey());//удаляет из обоих листов - почему?
+                            valueClone.remove(productClone.getKey());
                         }
 
                     }
